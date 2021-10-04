@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Reist_2021.Connection;
+using Reist_2021.Models;
 
 namespace Reist_2021.Controllers
 {
@@ -12,6 +14,27 @@ namespace Reist_2021.Controllers
         {
             return View();
         }
+
+        public ActionResult CadastroUsuario()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Teste(Usuario usuario)
+        {
+            try
+            {
+                usuario.Inserir();
+                return RedirectToAction("About", "Home");
+            }
+            catch
+            {
+                return RedirectToAction("Contact", "Home");
+            }
+        }
+
+
 
         public ActionResult About()
         {
