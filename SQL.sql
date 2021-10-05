@@ -1,4 +1,6 @@
-create database if not exists reist_2021;
+create database if not exists reist_2021
+default character set latin1
+collate latin1_general_cs;
 use reist_2021;
 
 create table usuario(
@@ -21,5 +23,7 @@ insert into usuario values(default, "Davi", "123", 0);
 insert into cliente values("Davi Oliveira", "davi@gmail.com");
 select * from usuario;
 select * from cliente;
+select * from usuario where username = 'Davi';
 
 -- drop table usuario;
+-- drop database reist_2021;

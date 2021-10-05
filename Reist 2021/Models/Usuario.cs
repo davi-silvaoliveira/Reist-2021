@@ -20,7 +20,6 @@ namespace Reist_2021.Models
         {
             Hash hash = new Hash(SHA512.Create());
 
-
             using (Database database = new Database())
             {
                 string command = string.Format("insert into usuario values(default, '{0}', '{1}', {2});", this.username,
@@ -29,17 +28,25 @@ namespace Reist_2021.Models
             }
         }
 
-        /*static public string teste()
+        public bool Autenticar()
         {
             using (Database database = new Database())
             {
-                string command = string.Format("select * from usuario where id = 2;");
+                Hash hash = new Hash(SHA512.Create());
+                //this.senha = hash.Criptografar(this.senha);
+
+                string command = string.Format("select * from usuario where username = '{0}';", this.username);
                 MySqlDataReader reader = database.ReturnCommand(command);
                 reader.Read();
 
-                return reader["senha"].ToString();
+                if(reader.HasRows == true)
+                {
+                    return hash.Verificar(this.senha, reader["senha"].ToString());
+                }
+                else
+                    return false;
             }
-        }*/
+        }
     }
 
     public class Hash
