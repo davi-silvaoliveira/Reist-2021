@@ -39,12 +39,12 @@ namespace Reist_2021.Models
                 MySqlDataReader reader = database.ReturnCommand(command);
                 reader.Read();
 
-                if(reader.HasRows == true)
+                if(reader.HasRows)
                 {
                     return hash.Verificar(this.senha, reader["senha"].ToString());
                 }
                 else
-                    return false;
+                    reader.Close(); return false;
             }
         }
     }

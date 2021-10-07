@@ -22,6 +22,7 @@ namespace Reist_2021.Controllers
 
         public ActionResult CadastroUsuario()
         {
+
             return View();
         }
 
@@ -34,13 +35,21 @@ namespace Reist_2021.Controllers
         //[ValidateAntiForgeryToken]
         public ActionResult Login(Usuario usuario)
         {
+            //Session["name"] = usuario.senha;
+            //return RedirectToAction("Index");
             if (usuario.Autenticar() == true)
             {
                 Session["name"] = usuario.username;
-                return RedirectToAction("NewIndex");
+                return RedirectToAction("Index");
             }
             else
                 return RedirectToAction("Contact");
+        }
+
+        public ActionResult Logout()
+        {
+            Session["name"] = null;
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
@@ -70,7 +79,10 @@ namespace Reist_2021.Controllers
         {
             ViewBag.Message = "Your contact page.";
 
-            return View();
+            if (Session["name"] != null)
+                return View();
+            else
+                return RedirectToAction("About");
         }
     }
 }
