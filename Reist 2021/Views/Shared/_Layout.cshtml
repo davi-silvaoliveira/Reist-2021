@@ -23,6 +23,7 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Novo usuário", "CadastroUsuario", "Home")</li>
                 </ul>
             </div>
         </div>
@@ -34,12 +35,12 @@
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application </p>
             @if (Session["name"] == null)
             {
-                <p>@Html.ActionLink("Login", "Login", "Home")</p>
+                <p>@Html.ActionLink("Login", "Login", "Login")</p>
             }
             else
             {
                 <p>Olá @Session["name"]</p>
-                <p>@Html.ActionLink("Sair", "Logout", "Home")</p>
+                <p>@Html.ActionLink("Sair", "Logout", "Login")</p>
             }
         </footer>
     </div>

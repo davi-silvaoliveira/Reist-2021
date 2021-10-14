@@ -15,41 +15,10 @@ namespace Reist_2021.Controllers
             return View();
         }
 
-        public ActionResult NewIndex()
-        {
-            return View();
-        }
-
         public ActionResult CadastroUsuario()
         {
 
             return View();
-        }
-
-        public ActionResult Login()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        //[ValidateAntiForgeryToken]
-        public ActionResult Login(Usuario usuario)
-        {
-            //Session["name"] = usuario.senha;
-            //return RedirectToAction("Index");
-            if (usuario.Autenticar() == true)
-            {
-                Session["name"] = usuario.username;
-                return RedirectToAction("Index");
-            }
-            else
-                return RedirectToAction("Contact");
-        }
-
-        public ActionResult Logout()
-        {
-            Session["name"] = null;
-            return RedirectToAction("Index");
         }
 
         [HttpPost]
@@ -65,8 +34,6 @@ namespace Reist_2021.Controllers
                 return RedirectToAction("Contact", "Home");
             }
         }
-
-
 
         public ActionResult About()
         {

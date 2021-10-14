@@ -16,7 +16,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Administração", "Index", "Home", new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -29,7 +29,17 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application </p>
+            @if (Session["name"] == null)
+            {
+                <!--Na verdade essa página só pode ser acessada realizando o login-->
+                <p>@Html.ActionLink("Login", "Login", "Login")</p>
+            }
+            else
+            {
+                <p>Olá @Session["name"]</p>
+                <a href="@Url.Action("Logout", "Login", new { area = "Default" })">Sair</a>
+            }
         </footer>
     </div>
 

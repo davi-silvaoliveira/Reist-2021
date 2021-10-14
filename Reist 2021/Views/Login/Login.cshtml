@@ -6,7 +6,7 @@
 
 <h2>CadastroUsuario</h2>
 
-@using (Html.BeginForm("Login", "Home", FormMethod.Post))
+@using (Html.BeginForm("Login", "Login", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 
@@ -39,5 +39,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index", "Home")
 </div>

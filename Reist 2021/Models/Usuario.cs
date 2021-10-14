@@ -41,6 +41,7 @@ namespace Reist_2021.Models
 
                 if(reader.HasRows)
                 {
+                    this.nivel = int.Parse(reader["nivel"].ToString());
                     return hash.Verificar(this.senha, reader["senha"].ToString());
                 }
                 else

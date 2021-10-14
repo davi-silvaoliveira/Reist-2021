@@ -13,5 +13,7 @@ namespace Reist_2021.Areas.Admin.Controllers
         {
             return View();
         }
+
+
     }
 }
