@@ -35,17 +35,27 @@ namespace Reist_2021.Models
                 Hash hash = new Hash(SHA512.Create());
                 //this.senha = hash.Criptografar(this.senha);
 
-                string command = string.Format("select * from usuario where username = '{0}';", this.username);
+                string command = string.Format("select * from cliente where email = '{0}';", this.username);
                 MySqlDataReader reader = database.ReturnCommand(command);
                 reader.Read();
 
                 if(reader.HasRows)
                 {
-                    this.nivel = int.Parse(reader["nivel"].ToString());
+                    this.nivel = 0;
                     return hash.Verificar(this.senha, reader["senha"].ToString());
                 }
                 else
-                    reader.Close(); return false;
+                {
+                    command = string.Format("select * from funcionario where email = '{0}';", this.username);
+                    reader = database.ReturnCommand(command); reader.Read();
+                    if (reader.HasRows)
+                    {
+                        this.nivel = int.Parse(reader["acesso"].ToString());
+                        return hash.Verificar(this.senha, reader["senha"].ToString());
+                    }
+                    else
+                        reader.Close(); return false;
+                }
             }
         }
     }

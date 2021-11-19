@@ -53,6 +53,9 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -126,6 +129,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Cliente\ClienteAreaRegistration.cs" />
+    <Compile Include="Areas\Cliente\Controllers\HomeController.cs" />
     <Compile Include="Connection\Database.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -133,6 +138,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Cliente.cs" />
+    <Compile Include="Models\Endereco.cs" />
     <Compile Include="Models\Hotel.cs" />
     <Compile Include="Models\Passagem.cs" />
     <Compile Include="Models\Usuario.cs" />
@@ -153,6 +159,10 @@
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Cliente\Views\web.config" />
+    <Content Include="Areas\Cliente\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Cliente\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Cliente\Views\Home\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -180,6 +190,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Home\CadastroUsuario.cshtml" />
+    <Content Include="Views\Home\CreateCliente.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -187,7 +198,10 @@
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Hoteis\" />
     <Folder Include="Areas\Admin\Views\Passagens\" />
+    <Folder Include="Areas\Cliente\Data\" />
     <Folder Include="Images\" />
+    <Folder Include="Views\Hoteis\" />
+    <Folder Include="Views\Passagens\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -38,7 +38,7 @@
             else
             {
                 <p>Olá @Session["name"]</p>
-                <a href="@Url.Action("Logout", "Login", new { area = "Default" })">Sair</a>
+                @Html.RouteLink("Sair", "Default", new { action = "Logout", controller = "Login" })
             }
         </footer>
     </div>

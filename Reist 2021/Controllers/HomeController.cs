@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using Reist_2021.Connection;
 using Reist_2021.Models;
+using System.Net.Http;
+//using Correios.Net;
 
 namespace Reist_2021.Controllers
 {
@@ -12,27 +14,34 @@ namespace Reist_2021.Controllers
     {
         public ActionResult Index()
         {
+            //Address address = SearchZip.GetAddress("89010025");
+            //ViewBag.Rua = address.Street;            
+            return View();            
+        }
+
+        public ActionResult CreateCliente()
+        {
             return View();
         }
 
-        public ActionResult CadastroUsuario()
+        public ActionResult AreaCliente()
         {
-
-            return View();
+            return RedirectToAction("Index", "Home", new { area = "Cliente"});
         }
 
         [HttpPost]
-        public ActionResult Cadastrar(Usuario usuario)
+        public ActionResult Cadastrar(Cliente cliente)
         {
-            try
+            cliente.Inserir(); return RedirectToAction("About", "Home");
+            /*try
             {
-                usuario.Inserir();
+                cliente.Inserir();
                 return RedirectToAction("About", "Home");
             }
             catch
             {
                 return RedirectToAction("Contact", "Home");
-            }
+            }*/
         }
 
         public ActionResult About()

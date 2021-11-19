@@ -22,7 +22,7 @@ namespace Reist_2021.Controllers
             if (usuario.Autenticar() == true)
             {
                 Session["name"] = usuario.username;
-                if (usuario.nivel == 1)
+                if (usuario.nivel > 1)
                     return RedirectToAction("Index", "Home", new { area = "Admin" });
                 else
                     return RedirectToAction("Index", "Home");
@@ -31,6 +31,7 @@ namespace Reist_2021.Controllers
                 return RedirectToAction("Contact", "Home");
         }
 
+        [OutputCache(NoStore = true, Duration = 0)]
         public ActionResult Logout()
         {
             Session["name"] = null;

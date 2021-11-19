@@ -20,35 +20,16 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    @if (Session["name"] == null)
-                    {
-                        <li>@Html.ActionLink("Cadastre-se", "CreateCliente", "Home")</li>
-                    }
-                    else
-                    {
-                        <li>@Html.ActionLink("Minha área", "AreaCliente", "Home")</li>
-                    }
                 </ul>
             </div>
         </div>
     </div>
+
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application </p>
-            @if (Session["name"] == null)
-            {
-                <p>@Html.ActionLink("Login", "Login", "Login")</p>
-            }
-            else
-            {
-                <p>Olá @Session["name"]</p>
-                <p>@Html.ActionLink("Sair", "Logout", "Login")</p>
-            }
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
 
